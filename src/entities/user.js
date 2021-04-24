@@ -29,7 +29,6 @@ export const UserSchema = new Schema(
 		name: {
 			type: String,
 			trim: true,
-			required: [true, 'Name is required']
 		}
 	},
 	{ collection: 'users' }

@@ -6,13 +6,13 @@ contact resource
 */
 require('dotenv').config()
 
-import fs from 'fs';
-import path from 'path';
-import express from 'express';
-import expressWinston from 'express-winston';
-import bodyParser from 'body-parser';
-import winston from 'winston';
-import logger from './utils/logger';
+const fs = require('fs');
+const path = require('path');
+const express = require('express');
+const expressWinston = require('express-winston');
+const bodyParser = require('body-parser');
+const winston = require('winston');
+const logger = require('./utils/logger');
 
 const app = express();
 

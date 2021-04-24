@@ -6,7 +6,8 @@
 		"clean": "rimraf 'dist'",
 		"start": "cd dist && node server.js",
 		"build": "babel src --out-dir dist",
-		"watch": "babel -w src --out-dir dist"
+		"watch": "babel -w src --out-dir dist",
+		"test": "mocha --timeout 10000"
 	},
 	"license": "MIT",
 	"devDependencies": {
@@ -16,7 +17,10 @@
 		"babel-plugin-transform-export-extensions": "^6.22.0",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
 		"babel-preset-env": "^1.6.1",
-		"rimraf": "^2.6.2"
+		"rimraf": "^2.6.2",
+		"chai": "^3.5.0",
+		"chai-http": "^2.0.1",
+		"mocha": "^2.4.5"
 	},
 	"dependencies": {
 		"cookie-parser": "^1.4.3",

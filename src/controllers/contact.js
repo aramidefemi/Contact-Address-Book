@@ -1,4 +1,5 @@
-import Contact from '../entities/user';
+import Contact from '../entities/contact';
+import logger from '../utils/logger';
 
 /**
  * A simple CRUD controller for contacts
@@ -9,7 +10,7 @@ const all = async (req, res) => {
   const { limit, page } = req.query;
   const skip = parseInt(limit) * parseInt(page);
   try {
-    const contacts = await Contact.find({active: true})
+    const contacts = await Contact.find()
       .populate('user', 'name username email')
       .skip(parseInt(skip) || 0)
       .limit(parseInt(limit) || 30);
@@ -20,9 +21,9 @@ const all = async (req, res) => {
   }
 };
 const get = async (req, res) => {
-  const { _id } = req.params;
+  const { id } = req.params;
   try {
-    const contact = await Contact.findById(_id).populate(
+    const contact = await Contact.findById(id).populate(
       'user',
       'name username email'
     );
@@ -37,35 +38,36 @@ const create = async (req, res) => {
   const { body } = req;
   try {
     body.user = _id;
-    const contact = await Contact(body);
+    const contact = new Contact(body); 
     contact.save();
 
-    return res.status(200).json({ success: true });
+    return res.status(200).json({ success: true, contact: contact._id  });
   } catch (error) {
-    return res.status(500).json({ err: error });
+    logger.error(error);
+    return res.status(500).json({ err: error});
   }
 };
 const update = async (req, res) => {
-  const { _id } = req.params;
+  const { id } = req.params;
   const { body } = req;
   try {
-    const contact = await Contact.findById(_id).updateOne(body);
+    const contact = await Contact.findById(id).updateOne(body);
 
-    return res.status(200).json({ contact });
+    return res.status(200).json({ success: true, });
   } catch (error) {
     return res.status(500).json({ err: error });
   }
 };
 const remove = async (req, res) => {
-  const { _id } = req.params;
+  const { id } = req.params;
   try {
-    const contact = await Contact.findById(_id).updateOne({ active: false });
+    await Contact.findById(id).deleteOne();
 
-    return res.status(200).json({ contact });
+    return res.status(200).json({ success: true });
   } catch (error) {
     return res.status(500).json({ err: error });
   }
-};
+}; 
 
 export default {
   // get all contacts for a user
