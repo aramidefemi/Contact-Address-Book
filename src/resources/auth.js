@@ -1,4 +1,4 @@
-import Auth from '../controllers/auth';
+const Auth = require('../controllers/auth');
 
 module.exports = app => {
 	app.route('/auth/login').post(Auth.login);

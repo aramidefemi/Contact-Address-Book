@@ -1,4 +1,4 @@
-Contact/Address Book (Rest Backend) Concept - Assessment
+# Contact/Address Book (Rest Backend) Concept - Assessment
 A nodejs based REST application which will serve as a data source for an existing Contact/Address book web and mobile application.
 The application will expose two rest resources
 
@@ -20,12 +20,19 @@ npm run start
 
 
 
-# API Document
+# API Documentation
 
 https://contact-address-book-api-docs.vercel.app
 
-# Run test
+# To Run SuperUser test
 
-npm run test
+## start server
+- npm run start
+
+## Start tests
+on another terminal
+- npm run test
+
+
 
 

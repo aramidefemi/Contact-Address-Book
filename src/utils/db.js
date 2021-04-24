@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-import logger from './logger';
-import { db_uri } from '../config/';
+const mongoose = require('mongoose');
+const logger = require('./logger');
+const { db_uri } = require('../config/');
 
 mongoose.Promise = global.Promise;
 
@@ -25,4 +25,4 @@ connection
     }
   });
 
-export default connection;
+exports.connection;

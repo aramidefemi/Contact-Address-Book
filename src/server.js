@@ -35,6 +35,7 @@ app.use(expressWinston.logger({
 	ignoreRoute: function (req, res) { return false; } // optional: allows to skip some log messages based on request and/or response
 }));
 
+if(!module.parent){
 app.listen(port, err => {
 	if (err) {
 		logger.error(err);
@@ -50,5 +51,6 @@ app.listen(port, err => {
 		`app is now running on port ${port} in ${env} mode`
 	);
 });
+}
 
 module.exports = app;

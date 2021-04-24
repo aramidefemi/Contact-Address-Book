@@ -15,7 +15,7 @@ const all = async (req, res) => {
       .skip(parseInt(skip) || 0)
       .limit(parseInt(limit) || 30);
 
-    return res.status(200).json({ contacts });
+    return res.status(200).json(contacts);
   } catch (error) {
     return res.status(500).json({ err: error });
   }
